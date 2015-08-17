@@ -12,7 +12,13 @@ var serialgps = function(device, baud) {
 		if (line == undefined || !line.match(/^\$.+\*[0-9A-F]{2}$/)) {
 			return;
 		}
-		var data = nmea.parse(line);
+  
+                try {
+	  	        var data = nmea.parse(line);
+                } catch (err) {
+                        return;
+                }
+
 		if (data == undefined) {
 			return;
 		}
