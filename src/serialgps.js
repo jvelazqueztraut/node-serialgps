@@ -5,7 +5,7 @@ var EventEmitter = require("events").EventEmitter;
 
 
 var serialgps = function(device, baud) {
-	var port = new serialport.SerialPort(device, {
+	var port = new serialport(device, {
 			baudrate: baud, parser: serialport.parsers.readline("\n") });
 	var self = this;
 	port.on('data', function(line) {
